@@ -13,4 +13,14 @@ describe("handaling frames", () => {
 
     cy.get("[aria-label='Bold']").click();
   });
+
+  it.only("appproach -2 using custom commands", () => {
+    cy.visit("https://the-internet.herokuapp.com/iframe");
+
+    cy.getiFrame("#mce_0_ifr")
+      .clear()
+      .type("Dollar Is a Great Engineer {ctrl+a}");
+
+    cy.get("[aria-label='Bold']").click();
+  });
 });
