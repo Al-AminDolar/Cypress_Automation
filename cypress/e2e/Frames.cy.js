@@ -1,4 +1,5 @@
 // source link:https://youtu.be/CTpSOW-oL7k Is a Great Engineer
+require("cypress-iframe");
 
 describe("handaling frames", () => {
   it("appproach 1", () => {
@@ -14,10 +15,21 @@ describe("handaling frames", () => {
     cy.get("[aria-label='Bold']").click();
   });
 
-  it.only("appproach -2 using custom commands", () => {
+  it("appproach -2 using custom commands", () => {
     cy.visit("https://the-internet.herokuapp.com/iframe");
 
-    cy.getiFrame("#mce_0_ifr")
+    cy.getIframe("#mce_0_ifr")
+      .clear()
+      .type("Dollar Is a Great Engineer {ctrl+a}");
+
+    cy.get("[aria-label='Bold']").click();
+  });
+
+  it.only("appproach -3 using cypress plugin", () => {
+    cy.visit("https://the-internet.herokuapp.com/iframe");
+    cy.frameLoaded("#mce_0_ifr");
+    cy.iframe("#mce_0_ifr")
+
       .clear()
       .type("Dollar Is a Great Engineer {ctrl+a}");
 
