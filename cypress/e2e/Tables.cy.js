@@ -8,7 +8,26 @@ describe("Handles Tables", () => {
     cy.get("#menu-customer>a").click();
     cy.get("#menu-customer>ul>li:first-child").click();
   });
-  it("URL Testing", () => {
-    cy.get("h1").should("have.text", "Customers");
+
+  it("Count Rows approch-1", () => {
+    cy.get(".table.table-bordered.table-hover>thead>tr")
+      .children()
+      .its("length")
+      .then((count) => {
+        cy.log(`There are ${count} rows here`);
+      });
+  });
+
+  it("Count Rows approach-2", () => {
+    cy.get(".table.table-bordered.table-hover>thead>tr")
+      .children()
+      .its("length")
+      .then((count) => {
+        if (count > 0) {
+          cy.log(`There are ${count} rows here`);
+        } else {
+          cy.log("There is no table on this page");
+        }
+      });
   });
 });
