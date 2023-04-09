@@ -1,4 +1,5 @@
 require("cypress-xpath");
+require("cypress-iframe");
 
 describe("Mouse Operations", () => {
   it.skip("Hover", () => {
@@ -14,7 +15,7 @@ describe("Mouse Operations", () => {
     ).should("be.visible");
   });
 
-  it.only("Right click", () => {
+  it.skip("Right click", () => {
     cy.visit("https://swisnl.github.io/jQuery-contextMenu/demo.html");
     // approach1
     // cy.get(".context-menu-one.btn.btn-neutral").trigger("contextmenu");
@@ -27,5 +28,24 @@ describe("Mouse Operations", () => {
     cy.get(
       ".context-menu-item.context-menu-icon.context-menu-icon-copy"
     ).should("be.visible");
+  });
+
+  it.skip("Double Click", () => {
+    cy.visit(
+      "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_ev_ondblclick"
+    );
+    cy.frameLoaded("#iframeResult"); //frame loaded
+
+    //approach-1
+    // cy.iframe("#iframeResult")
+    //   .find("button[ondblclick='myFunction()']")
+    //   .trigger("dblclick");
+    // cy.iframe("#iframeResult").find("#demo").should("have.text", "Hello World");
+
+    //Approach -2
+    cy.iframe("#iframeResult")
+      .find("button[ondblclick='myFunction()']")
+      .dblclick();
+    cy.iframe("#iframeResult").find("#demo").should("have.text", "Hello World");
   });
 });
