@@ -57,7 +57,7 @@ describe("Handles Tables", () => {
     ).contains("princytrainings4@gmail.com");
   });
 
-  it.only("Red all the rows and columns data from 1st page", () => {
+  it.skip("Red all the rows and columns data from 1st page", () => {
     cy.get("table[class='table table-bordered table-hover']>tbody>tr").each(
       ($row, index, $rows) => {
         cy.wrap($row).within(() => {
@@ -67,5 +67,35 @@ describe("Handles Tables", () => {
         });
       }
     );
+  });
+
+  it.only("pagination", () => {
+    // find totall number of pages
+    // cy.get(".col-sm-6.text-end").then((e) => {
+    //   let mytext = e.text();
+    //   let totalpages = mytext.substring(
+    //     mytext.indexOf("(") + 1,
+    //     mytext.indexOf("Pages") - 1
+    //   );
+    //   cy.log("Total number of pages in a table========>" + totalpages);
+    // });
+
+    let totalpages = 3;
+    for (let p = 1; p <= totalpages; p++) {
+      if (totalpages > 1) {
+        cy.log("Active Page" + p);
+        cy.get("ul[class='pagination']>li:nth-child(" + p + ")").click();
+        cy.wait(3000);
+        cy.get("table[class='table table-bordered table-hover']>tbody>tr").each(
+          ($row, index, $rows) => {
+            cy.wrap($row).within(() => {
+              cy.get("td:nth-child(3)").then((e) => {
+                e.text(); //email
+              });
+            });
+          }
+        );
+      }
+    }
   });
 });
