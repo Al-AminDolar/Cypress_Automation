@@ -3686,6 +3686,11 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
 
+cypress-drag-drop@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/cypress-drag-drop/-/cypress-drag-drop-1.1.1.tgz#33d68dc82b93fe6148423b99d34e1ce277e1392d"
+  integrity sha512-sp1dILmN8HXCUIeeztqlCslyghFT5w1gHM7RFA/AUSLKmDI/ovxNhZQI6U2/cbH2ehbCuvPppyh99uEt9dhF3w==
+
 cypress-iframe@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cypress-iframe/-/cypress-iframe-1.0.1.tgz#2a286cfd47a240aa9af0ad9f339f4c6f942089f8"

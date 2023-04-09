@@ -1,5 +1,6 @@
 require("cypress-xpath");
 require("cypress-iframe");
+require("cypress-drag-drop");
 
 describe("Mouse Operations", () => {
   it.skip("Hover", () => {
@@ -47,5 +48,29 @@ describe("Mouse Operations", () => {
       .find("button[ondblclick='myFunction()']")
       .dblclick();
     cy.iframe("#iframeResult").find("#demo").should("have.text", "Hello World");
+  });
+
+  it.skip("Drag and Drop Using Plugin", () => {
+    cy.visit(
+      "http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html"
+    );
+    cy.get("#box1").should("be.visible");
+    cy.get("#box103").should("be.visible");
+    cy.wait(3000);
+    cy.get("#box1").drag("#box103", { force: true });
+  });
+
+  it.only("Scrolling", () => {
+    cy.visit("https://www.countries-ofthe-world.com/flags-of-the-world.html");
+    cy.get(
+      ":nth-child(2) > tbody > :nth-child(102) > :nth-child(1) > img"
+    ).scrollIntoView({ duration: 2000 });
+
+    cy.get(
+      ":nth-child(1) > tbody > :nth-child(2) > :nth-child(2)"
+    ).scrollIntoView({ duration: 2000 });
+    cy.get(":nth-child(1) > tbody > :nth-child(2) > :nth-child(2)").should(
+      "be.visible"
+    );
   });
 });
