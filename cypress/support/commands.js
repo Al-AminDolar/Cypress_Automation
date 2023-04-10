@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 /// <reference types="Cypress"/>
+
 // / <reference types="cypress-xpath"/>
 
 Cypress.Commands.add("getIframe", (iframe) => {
@@ -33,4 +34,33 @@ Cypress.Commands.add("getIframe", (iframe) => {
     .its("0.contentDocument.body")
     .should("be.visible")
     .then(cy.wrap);
+});
+
+// Custom commands for clicking a link using a label
+
+Cypress.Commands.add("ClickLink", (label) => {
+  cy.get("a").contains(label).click();
+});
+
+//over write contains
+// Cypress.Commands.overwriteQuery(
+//   "contains",
+//   (originalFn, subject, filter, text, options = {}) => {
+//     if (typeof text === "object") {
+//       options = text;
+//       text = filter;
+//       filter = undefined;
+//     }
+
+//     options.matchCase = false;
+
+//     return originalFn(subject, filter, text, options);
+//   }
+// );
+
+//Custom Command for login
+Cypress.Commands.add("loginApp", (email, password) => {
+  cy.get("#Email").type(email);
+  cy.get("#Password").type(password);
+  cy.get("button[class='button-1 login-button']").click();
 });

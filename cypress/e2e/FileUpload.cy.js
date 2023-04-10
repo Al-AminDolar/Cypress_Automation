@@ -31,7 +31,7 @@ describe("File Uploads", () => {
     ).should("be.visible");
   });
 
-  it.skip("File Upload - Multiple File Upload", () => {
+  it("File Upload - Multiple File Upload", () => {
     cy.visit("https://davidwalsh.name/demo/multiple-file-upload.php");
     cy.get("#filesToUpload").attachFile(["dolar.txt", "sss.txt"]);
     cy.get(":nth-child(6) > strong").should("have.text", "Files You Selected:");
