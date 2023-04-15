@@ -28,6 +28,7 @@ https: describe("CustomCommands", () => {
     cy.wait(3000);
     cy.ClickLink("Log in");
     cy.loginApp("alamin.dolar1@gmail.com", "test123");
+    cy.wait(5000);
     cy.get(".ico-account").should("have.text", "My account");
   });
 });
