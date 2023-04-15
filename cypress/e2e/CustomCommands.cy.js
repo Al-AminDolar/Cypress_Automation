@@ -1,4 +1,6 @@
-describe("CustomCommands", () => {
+//www.youtube.com/watch?v=CZ0c9-Mnil4&t=1482s&ab_channel=SDET-QAAutomationTechie
+
+https: describe("CustomCommands", () => {
   it.skip("handaling Links", () => {
     cy.visit("https://demo.nopcommerce.com/");
 
